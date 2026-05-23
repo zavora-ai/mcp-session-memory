@@ -1,0 +1,88 @@
+server_id = "mcp_session_memory"
+display_name = "Session Memory MCP"
+version = "1.0.0"
+domain = "platform"
+sdk_version = "0.1.0"
+risk_level = "high"
+writes_allowed = "gated"
+transports = ["stdio", "streamable_http"]
+credentials = []
+governance_gates = ["memory_scope_required", "audit_all_writes"]
+environments = ["development", "staging", "production"]
+
+[[tools]]
+name = "get_session_state"
+description = "Read current typed session state"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "list_session_events"
+description = "Inspect trace events, turns, tools, retries, approvals"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "retrieve_memory"
+description = "Search scoped memory for relevant facts"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "store_memory"
+description = "Write approved memory entries"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "update_memory"
+description = "Correct an existing memory entry (creates new version)"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "delete_memory"
+description = "Remove sensitive or incorrect memory entries"
+risk_class = "identity_security_action"
+requires_approval = true
+credential_bindings = []
+
+[[tools]]
+name = "redact_memory"
+description = "Redact PII or sensitive details from memory"
+risk_class = "internal_write"
+requires_approval = true
+credential_bindings = []
+
+[[tools]]
+name = "list_memory_refs"
+description = "List memory references that influenced a session"
+risk_class = "read_only"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "create_replay_snapshot"
+description = "Freeze session state for replay"
+risk_class = "internal_write"
+requires_approval = false
+credential_bindings = []
+
+[[tools]]
+name = "resume_session"
+description = "Resume paused HITL workflow"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = []
+
+[[tools]]
+name = "terminate_session"
+description = "Stop active session with audit reason"
+risk_class = "external_write"
+requires_approval = true
+credential_bindings = []
