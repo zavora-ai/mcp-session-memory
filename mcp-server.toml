@@ -1,6 +1,6 @@
 server_id = "mcp_session_memory"
 display_name = "Session Memory MCP"
-version = "1.0.0"
+version = "1.1.0"
 domain = "platform"
 sdk_version = "0.1.0"
 risk_level = "high"

@@ -1,3 +1,4 @@
+use adk_mcp_sdk::{HealthCheck, HealthStatus};
 use std::sync::Arc;
 use chrono::Utc;
 use rmcp::{handler::server::wrapper::Parameters, schemars, tool, tool_router};
@@ -288,5 +289,16 @@ impl SessionMemoryServer {
         serde_json::to_string_pretty(&serde_json::json!({
             "session_id": i.session_id, "status": "terminated", "reason": i.reason
         })).unwrap()
+    }
+}
+
+#[async_trait::async_trait]
+impl HealthCheck for SessionMemoryServer {
+    async fn check_health(&self) -> HealthStatus {
+        HealthStatus {
+            healthy: true,
+            message: Some("operational".into()),
+            latency_ms: Some(1),
+        }
     }
 }

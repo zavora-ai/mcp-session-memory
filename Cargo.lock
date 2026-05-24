@@ -993,7 +993,7 @@ dependencies = [
 
 [[package]]
 name = "mcp-session-memory"
-version = "1.0.0"
+version = "1.1.0"
 dependencies = [
  "adk-mcp-sdk",
  "anyhow",
